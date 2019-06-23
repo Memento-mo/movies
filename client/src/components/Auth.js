@@ -1,5 +1,100 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
+
+import profileWhite from '../icons/profile-white.png';
+import profileBlue from '../icons/profile-blue.png';
+import profile from '../icons/profile.svg';
+
+const AuthWrapper = styled.div`
+    width: 50px;
+    height: 50px;
+    background: url(${profileWhite}) no-repeat center;
+    transition: 0.2s ease;
+    cursor: pointer;
+    margin-left: 20px;
+    position: relative;
+  
+
+  :hover {
+    background: url(${profileBlue}) no-repeat center;
+  }
+
+  .block-reg {
+    padding: 10px;
+    position: absolute;
+    width: 260px;
+    height: 120px;
+    box-shadow: 0px 0px 10px 2px rgba(97,97,97, .5);
+    right: 10%;
+    top: 35px;
+    z-index: 999;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(0px, 20px);
+    transition: 0.4s ease;
+    opacity: 0;
+    visibility: hidden;
+    justify-content: space-between;
+  }
+
+  .block-reg__profile__img {
+    height: 40px;
+    width: 40px;
+  }
+
+  .block-reg__auth {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .block-reg__button {
+    font-size: 12px;
+    color: #fff;
+    padding: 5px 10px;
+    background: #283593;
+    font-weight: 600;
+    transition: 0.4s ease;
+  }
+
+  .block-reg__button:hover {
+    color: #fff;
+    background: #000;
+  }
+
+  .block-reg:before, .block-reg:after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    top: -9px;
+    right: 10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent #fff #fff transparent;
+    background: #fff;
+    transform: rotate(45deg)
+  }
+  
+  :hover > .block-reg {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .block-reg__profile-edit {
+    font-size: 14px;
+    color: #000;
+    font-weight: 600;
+    transition: 0.3s ease;
+  }
+  
+  .quit {
+    text-align: center;
+    width: 100%;
+  }
+`;
 
 const Auth = ({ auth }) => {
   const renderContent = () => {
@@ -8,7 +103,16 @@ const Auth = ({ auth }) => {
         return 'Загрузка...';
       case false:
         return (
-          <a href="/auth/google">Вход</a>
+          <AuthWrapper class="icons-img-two">
+            <div class="block-reg">
+              <div class="block-reg__profile">
+                <img src={profile} class="block-reg__profile__img" />
+              </div>
+              <div class="block-reg__auth">
+                <a class="block-reg__button" href="/auth/google">Авторизация</a> 
+              </div>
+            </div>
+          </AuthWrapper>
         );
       default:
         return 'Вход выполнен';

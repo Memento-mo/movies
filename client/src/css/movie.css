@@ -127,6 +127,28 @@
   -webkit-text-fill-color: transparent;
 }
 
+.card__heart {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 24px;
+  height: 24px;
+  background: url('../icons/like-before.png') no-repeat center;
+  transition: 0.4s ease;
+  opacity: 0;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.card__heart:hover {
+  background: url('../icons/like-after.png') no-repeat center;
+}
+
+.card:hover .card__heart {
+  opacity: 1;
+}
+
 .card__bio {
   position: relative;
   display: block;
@@ -137,6 +159,7 @@
   -webkit-transition: all var(--speed) ease;
   transition: var(--speed) ease;
   opacity: 0;
+  height: 400px;
 }
 
 .card:hover .card__bio {

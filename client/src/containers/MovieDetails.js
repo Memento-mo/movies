@@ -52,7 +52,7 @@ const MovieDetails = ({ match, getMovie, movie, loading, geral, location }) => {
 const getMovieDetails = (id, page, getMovie) => {
   scroll.scrollToTop({
     smooth: true,
-    delay: 500
+    delay: 1000
   })
   getMovie(id, page)
   return () => clearRecom()

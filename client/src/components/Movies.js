@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import MovieCart from './MovieCart';
-import Pagination from './Pagination';
+import MovieCart from "./MovieCart";
+import Pagination from "./Pagination";
 
 // const Section = styled.section`
 //   margin-bottom: 50px;
@@ -29,7 +29,7 @@ const MoviesContainer = styled.section`
   }
   @media ${props => props.theme.mediaQueries.smallest} {
     left: 18%;
-    width: 76%;  
+    width: 76%;
   }
   @media ${props => props.theme.mediaQueries.verySmallest} {
     left: 15%;
@@ -90,25 +90,22 @@ const Wrapped = styled.div`
 `;
 
 const Movies = ({ movies, type }) => {
-  const result = movies.results
+  const result = movies.results;
   return (
     <MoviesContainer>
-
-      <Wrapped> 
-        { 
-          result.map(movie => 
-              <MovieCart 
-                movies={movie} 
-                key={movie.id}
-                type={type === 'search' ? movie.media_type : type}/>
-            ) 
-        } 
+      <Wrapped>
+        {result.map(movie => (
+          <MovieCart
+            movies={movie}
+            key={movie.id}
+            type={type === "search" ? movie.media_type : type}
+          />
+        ))}
       </Wrapped>
 
-      <Pagination movies={movies}/>
+      <Pagination movies={movies} />
     </MoviesContainer>
-  )
-}
+  );
+};
 
-export default Movies
-
+export default Movies;

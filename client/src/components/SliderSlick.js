@@ -48,6 +48,10 @@ const SliderSlick = ({ cast, baseUrl }) => {
     if(totalItems > cast.length) {
       totalItems = cast.length;
     }
+
+    if(cast.length < 10) {
+      totalItems = 5;
+    }
     setTotalShow(totalItems)
   }
 

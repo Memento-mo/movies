@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import { slide as Burger } from 'react-burger-menu';
 import { NavLink } from 'react-router-dom';
-import RenderPropsMenu from './Menu';
 
 const Home = styled.div`
   font-weight: 600;
@@ -108,9 +107,12 @@ const MenuMobile = ({ movies, tv }) => {
           <NavLink onClick={() => setisOpened(false)} to='/'>Главная</NavLink>
         </Home>
         <Block>
-          <RenderPropsMenu burger={() => setisOpened(false)} genres={movies} type={'movie'} title={'Фильмы'}/>
+          Фильмы:<br />
+          {
+            movies.map(item => <div key={item.id}>{item.name}</div>)
+          }
         </Block>
-        <RenderPropsMenu burger={() => setisOpened(false)} genres={tv} type={'tv'} title={'Сериалы'}/>
+        {/* <RenderPropsMenu burger={() => setisOpened(false)} genres={tv} type={'tv'} title={'Сериалы'}/> */}
       </Burger>
     </Fragment>
   )
