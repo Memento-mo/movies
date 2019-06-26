@@ -20,6 +20,10 @@ const ButtonsWrapped = styled.div`
 const Pagination = ({ movies }) => {
   const {page, total_pages} = movies
 
+  if (!total_pages || !page) {
+    return null;
+  }
+
   if (total_pages === 1 ) return null;
 
   if(page < total_pages && page === 1) {

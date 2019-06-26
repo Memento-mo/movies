@@ -2,7 +2,9 @@ const theme = {
   colors: {
     blue: '#283593',
     dark: '#424242',
-    text: '#EEEEEE'
+    text: '#EEEEEE',
+    darkBlue: 'rgba(55,71,79,1)',
+    lightBlue: '#1E88E5'
   },
   mediaQueries: {
     veryMobile: `only screen and (max-width: 21.25em)`,

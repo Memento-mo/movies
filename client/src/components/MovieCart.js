@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { filmBookmark } from "../actions/index";
+import { filmBookmark } from "../actions/profile";
 
 import "../css/movie.css";
 
@@ -17,9 +17,9 @@ const Card = styled.div``;
 const Wrapped = styled.div``;
 const CardLikeImg = styled.button``;
 
-const MovieCart = ({ movies, type = "movie", filmBookmark }) => {
-  const { poster_path, overview, original_title, id, name } = movies;
-
+const MovieCart = ({ movies, type = 'movie', filmBookmark }) => {
+  const { poster_path, overview, original_title, id, name, title } = movies;
+  
   return (
     <Wrapped className="container-cart">
       <Card className="card" data-effect="zoom">
@@ -42,13 +42,13 @@ const MovieCart = ({ movies, type = "movie", filmBookmark }) => {
         <Link to={`${process.env.PUBLIC_URL}/${type}/${id}`}>
           <CardBody className="card__body">
             <CardBio className="card__bio">
-              {overview ? overview : "Описание отсутствует..."}
+              {overview || "Описание отсутствует..."}
             </CardBio>
           </CardBody>
         </Link>
       </Card>
       <CardName className="card__name">
-        {original_title ? original_title : name}
+        {original_title || name || title}
       </CardName>
     </Wrapped>
   );

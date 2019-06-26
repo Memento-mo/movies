@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const bookmarkSchema = new Schema({
+const viewedSchema = new Schema({
   title: String,
   overview: String,
   poster_path: String,
@@ -10,4 +10,4 @@ const bookmarkSchema = new Schema({
   _user: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
-mongoose.model('bookmarks', bookmarkSchema);
+mongoose.model('viewed', viewedSchema);

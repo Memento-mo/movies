@@ -90,7 +90,7 @@ const Wrapped = styled.div`
 `;
 
 const Movies = ({ movies, type }) => {
-  const result = movies.results;
+  const result = movies.results || [];
   return (
     <MoviesContainer>
       <Wrapped>
@@ -98,7 +98,7 @@ const Movies = ({ movies, type }) => {
           <MovieCart
             movies={movie}
             key={movie.id}
-            type={type === "search" ? movie.media_type : type}
+            type={type === "search" ? movie.media_type : type || movie.type}
           />
         ))}
       </Wrapped>

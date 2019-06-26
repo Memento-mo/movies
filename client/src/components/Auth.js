@@ -1,20 +1,20 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import styled from 'styled-components';
+import React from "react";
+import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
+import styled from "styled-components";
 
-import profileWhite from '../icons/profile-white.png';
-import profileBlue from '../icons/profile-blue.png';
-import profile from '../icons/profile.svg';
+import profileWhite from "../icons/profile-white.png";
+import profileBlue from "../icons/profile-blue.png";
+import profile from "../icons/profile.svg";
 
 const AuthWrapper = styled.div`
-    width: 50px;
-    height: 50px;
-    background: url(${profileWhite}) no-repeat center;
-    transition: 0.2s ease;
-    cursor: pointer;
-    margin-left: 20px;
-    position: relative;
-  
+  width: 50px;
+  height: 50px;
+  background: url(${profileWhite}) no-repeat center;
+  transition: 0.2s ease;
+  cursor: pointer;
+  margin-left: 20px;
+  position: relative;
 
   :hover {
     background: url(${profileBlue}) no-repeat center;
@@ -25,7 +25,7 @@ const AuthWrapper = styled.div`
     position: absolute;
     width: 260px;
     height: 120px;
-    box-shadow: 0px 0px 10px 2px rgba(97,97,97, .5);
+    box-shadow: 0px 0px 10px 2px rgba(97, 97, 97, 0.5);
     right: 10%;
     top: 35px;
     z-index: 999;
@@ -46,7 +46,6 @@ const AuthWrapper = styled.div`
   }
 
   .block-reg__auth {
-    margin-top: 25px;
     display: flex;
     justify-content: space-between;
   }
@@ -58,6 +57,7 @@ const AuthWrapper = styled.div`
     background: #283593;
     font-weight: 600;
     transition: 0.4s ease;
+    margin-right: 10px;
   }
 
   .block-reg__button:hover {
@@ -65,8 +65,17 @@ const AuthWrapper = styled.div`
     background: #000;
   }
 
-  .block-reg:before, .block-reg:after {
-    content: '';
+  .black {
+    background: #000;
+  }
+
+  .black:hover {
+    background: #283593;
+  }
+
+  .block-reg:before,
+  .block-reg:after {
+    content: "";
     position: absolute;
     z-index: 2;
     top: -9px;
@@ -75,56 +84,76 @@ const AuthWrapper = styled.div`
     border-style: solid;
     border-color: transparent #fff #fff transparent;
     background: #fff;
-    transform: rotate(45deg)
+    transform: rotate(45deg);
   }
-  
+
   :hover > .block-reg {
     opacity: 1;
     visibility: visible;
   }
-  
+
   .block-reg__profile-edit {
     font-size: 14px;
     color: #000;
     font-weight: 600;
     transition: 0.3s ease;
   }
-  
+
   .quit {
     text-align: center;
     width: 100%;
   }
 `;
 
+const Profile = ({ auth }) => {
+  const renderAuth = auth => {
+    if (auth) {
+      return (
+        <div className="block-reg__auth">
+          <Link className="block-reg__button" to={`${process.env.PUBLIC_URL}/profile`}>
+            Профиль
+          </Link>
+          <a className="block-reg__button black" href="/api/logout">
+            Выход
+          </a>
+        </div>
+      );
+    }
+
+    return (
+      <div className="block-reg__auth">
+        <a className="block-reg__button" href="/auth/google">
+          Авторизация
+        </a>
+      </div>
+    );
+  };
+  return (
+    <AuthWrapper className="icons-img-two">
+      <div className="block-reg">
+        <div className="block-reg__profile">
+          <img src={profile} className="block-reg__profile__img" />
+        </div>
+        {renderAuth(auth)}
+      </div>
+    </AuthWrapper>
+  );
+};
+
 const Auth = ({ auth }) => {
   const renderContent = () => {
-    switch(auth) {
+    switch (auth) {
       case null:
-        return 'Загрузка...';
+        return "Загрузка...";
       case false:
-        return (
-          <AuthWrapper class="icons-img-two">
-            <div class="block-reg">
-              <div class="block-reg__profile">
-                <img src={profile} class="block-reg__profile__img" />
-              </div>
-              <div class="block-reg__auth">
-                <a class="block-reg__button" href="/auth/google">Авторизация</a> 
-              </div>
-            </div>
-          </AuthWrapper>
-        );
+        return <Profile auth={auth} />;
       default:
-        return 'Вход выполнен';
+        return <Profile auth={auth} />;
     }
-  }
-  
-  return (
-    <div>
-      { renderContent() }
-    </div>
-  )
-}
+  };
+
+  return <div>{renderContent()}</div>;
+};
 
 const mapStateToProps = ({ auth }) => {
   return {
@@ -132,4 +161,4 @@ const mapStateToProps = ({ auth }) => {
   };
 };
 
-export default connect(mapStateToProps)(Auth)
+export default connect(mapStateToProps)(Auth);

@@ -7,6 +7,7 @@ import personReducer from './personReducer';
 import searchReducer from './searchReducer';
 import tvReducer from './tvReducer';
 import authReducer from './authReducer';
+import profileReducer from './profileReducer';
 
 export default combineReducers({
   geral: configReducer,
@@ -15,5 +16,6 @@ export default combineReducers({
   person: personReducer,
   search: searchReducer,
   tv: tvReducer,
-  auth: authReducer
+  auth: authReducer,
+  profile: profileReducer
 });

@@ -25,7 +25,6 @@ const TVDetails = ({ match, getSeries, clearTv, tv, loading, geral, location }) 
   }, [match.params.id, params.page])
 
   const { secure_base_url } = geral.base.images;
-
   return loading ?
       <LoaderWrapper />
     :

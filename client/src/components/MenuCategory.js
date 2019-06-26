@@ -27,6 +27,7 @@ const Nav = styled.nav`
     font-size: 14px;
     line-height: 1.8em;
     color: #fff;
+    font-weight: 700;
   }
   .link:hover {
     text-decoration: none;
@@ -77,7 +78,7 @@ const MenuCategory = ({ genres = [], type, title, burger }) => {
               return (
                 <li key={item.id}>
                   <NavLink className="link" to={`/genre/${type}/${item.name}`}>
-                    {item.name}
+                    {item.name.toLowerCase()}
                   </NavLink>
                 </li>
               );

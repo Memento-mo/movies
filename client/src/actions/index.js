@@ -33,7 +33,3 @@ export const getUser = () => async dispatch => {
 
   dispatch({ type: TYPES.FETCH_USER, payload: res.data });
 };
-
-export const filmBookmark = movie => async dispatch => {
-  axios.post("/api/bookmark", movie);
-};

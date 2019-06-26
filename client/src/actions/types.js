@@ -47,3 +47,6 @@ export const FETCH_GET_TV = 'FETCH_GET_TV';
 
 // Пользователи 
 export const FETCH_USER = 'FETCH_USER';
+
+// Получение избранных фильмов
+export const FETCH_LOAD_BOOKMARKS = 'FETCH_LOAD_BOOKMARKS';

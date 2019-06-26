@@ -1,4 +1,4 @@
-form {
+.form {
   position: relative;
   top: 0;
   left: 0;
@@ -13,7 +13,7 @@ form {
   padding: 5px;
 }
 
-input{
+.input-search{
   position: absolute;
   top: 0;
   left: 0;
@@ -43,16 +43,16 @@ input{
   transition: all 1s;
 }
 
-form:hover{
+.form:hover{
   width: 200px;
   cursor: pointer;
 }
 
-form:hover input{
+.form:hover .input-search{
   display: block;
 }
 
-form:hover .fa{
+.form:hover .fa{
   background: #283593;
   color: white;
 }
@@ -65,18 +65,18 @@ form:hover .fa{
 }
 
 @media only screen and (max-width: 645px) {
-  form:hover{
+  .form:hover{
     width: 170px;
     cursor: pointer;
   }
 
-  form {
+  .form {
     transform: translate(9%, 0%);
     height: 36px;
     width: 37px;
   }
 
-  input{
+  .input-search{
     width: 100%;;
     height: 29.5px;
   }

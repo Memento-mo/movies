@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import MenuMobile from './MenuMobile';
-import MenuCat from './MenuCategory';
+import MenuCategory from './MenuCategory';
 
 const Home = styled.div`
   font-weight: 600;
@@ -53,8 +53,8 @@ const Header = ({ movies, tv }) => {
           <NavLink to='/'>Главная</NavLink>
         </Home>
         
-        <MenuCat genres={movies} type={'movie'} title={'Фильмы'}/>
-        <MenuCat genres={tv} type={'tv'} title={'Сериалы'}/>
+        <MenuCategory genres={movies} type={'movie'} title={'Фильмы'}/>
+        <MenuCategory genres={tv} type={'tv'} title={'Сериалы'}/>
       </Pc>
     </Fragment>
   )

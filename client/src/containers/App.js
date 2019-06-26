@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, Fragment } from 'react'
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
@@ -21,6 +21,8 @@ import TVDetails from './TVDetails';
 import Person from './Person';
 import Search from './Search';
 import Footer from './Footer';
+import Profile from './Profile';
+import ProfileBookMark from '../components/ProfileBookMark';
 
 const Wrapped = styled.div`
   max-width: 1500px;
@@ -70,6 +72,8 @@ const App = ({ init, isLoading }) => {
 
             <Route path={`${process.env.PUBLIC_URL}/search/:query`} component={Search} exact/>
 
+            <ProfileRoutes />
+
             <Route path={`${process.env.PUBLIC_URL}/404`} component={Error} exact/>
 
             <Redirect to={`${process.env.PUBLIC_URL}/404`} />
@@ -79,6 +83,15 @@ const App = ({ init, isLoading }) => {
         <Footer />
       </Router>
     )
+}
+
+const ProfileRoutes = () => {
+  return (
+    <Fragment>
+      <Route path={`${process.env.PUBLIC_URL}/profile`} component={Profile} exact/>
+      <Route path={`${process.env.PUBLIC_URL}/profile/bookmark`} component={ProfileBookMark} exact/>
+    </Fragment>
+  )
 }
 
 const mapStateToProps = ({ geral }) => {
